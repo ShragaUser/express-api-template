@@ -1,11 +1,10 @@
-const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const logger = require("morgan");
 
-const isAlive = (req, res, next) => res.status(200).send('Server Is Up');
+const isAlive = res => res.status(200).send('Server Is Up');
 
 const applyGenericMiddleware = (app) => {
 
