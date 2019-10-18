@@ -6,6 +6,7 @@ const logger = require("morgan");
 
 const isAlive = res => res.status(200).send('Server Is Up');
 
+
 const applyGenericMiddleware = (app) => {
 
     app.use('/IsAlive', isAlive);
