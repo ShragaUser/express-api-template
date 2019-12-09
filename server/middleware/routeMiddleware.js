@@ -1,12 +1,18 @@
 const path = require("path");
-const { cacheWrapper } = require(path.resolve(__dirname, "../utils/cacheHandler"));
+const { getSpikeAuthMiddleWare } = require("spike-auth-middleware");
 
-const getData = async (req, res, next) => {
-    return "Data!";
+const configuration = {
+    audience: 'very-important-audience',
+    allowedScopes: ["READ"],
+    secretOrKey: 'key'
 };
 
+const allowForReadScopeOnly = getSpikeAuthMiddleWare(configuration);
+
 const applyRouteMiddleware = (app) => {
-    app.use('/persons/domainUser/:id', cacheWrapper(getData));
+    app.get('/', allowForReadScopeOnly, (req, res, next) => {
+        res.status(200).send('allowed for read scope');
+    })
 }
 
 module.exports = { applyRouteMiddleware };
