@@ -3,7 +3,9 @@ version: '2.1'
 services:
   express-template:
     image: express-template
-    build: .
+    build:
+      context: ../
+      dockerfile: Dockerfile
     environment:
       NODE_ENV: production
     ports:
