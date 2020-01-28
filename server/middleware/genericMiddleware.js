@@ -27,9 +27,9 @@ const configureSession = () => {
     }
     else if (store && store === "mongo") {
         const mongoStore = require('connect-mongo')(session);
-        const client = getMongoClient();
+        const clientPromise = getMongoClient();
         sessionConfiguration.store = new mongoStore({
-            client,
+            clientPromise,
             dbName: 'sessions'
         })
     }
