@@ -22,6 +22,8 @@
     "morgan": "^1.9.1",
     "njwt": "^1.0.0",
     "nodemon": "^1.19.4",
+    "passport": "^0.4.1",
+    "passport-shraga": "^1.4.0",
     "path": "^0.12.7",
     "redis": "^2.8.0",
     "spike-auth-middleware": "^1.0.1",

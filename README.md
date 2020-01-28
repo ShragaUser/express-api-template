@@ -2,8 +2,6 @@
 
 ## TODO:
 
-`authentication middleware`
-
 `error handling middleware`
 
 `tests`
