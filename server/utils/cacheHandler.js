@@ -1,7 +1,7 @@
 const redisCacheMiddleware = require("blueai-redis-cache-middleware");
 const path = require("path");
-const { redisHost } = require(path.resolve(__dirname, "../../config/config"))();
-
+const { redisOptions } = require(path.resolve(__dirname, "../../config/config"))();
+const { redisHost } = redisOptions;
 
 /**
  * cacheWrapper accepts a function(req,res,next) that return a value of {err, respone}.

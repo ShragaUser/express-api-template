@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const logger = require('morgan');
 const passport = require('passport');
-const shraga = require(path.resolve(__dirname, './passport.js'));
+const { configurePassport } = require(path.resolve(__dirname, '../passport.js'));
 const { sessionConfig } = require(path.resolve(__dirname, '../../config/config'))();
 const { getClient: getRedisClient } = require(path.resolve(__dirname, '../utils/redisHandler'));
 const { getClient: getMongoClient } = require(path.resolve(__dirname, '../utils/mongoHandler'));
@@ -36,7 +36,7 @@ const configureSession = () => {
     return sessionConfiguration;
 }
 
-const applyGenericMiddleware = (app) => {
+const applyGenericMiddleware = app => {
     app.use('/IsAlive', isAlive);
     app.use('/health', isAlive);
 
@@ -53,6 +53,7 @@ const applyGenericMiddleware = (app) => {
         })
     );
     app.use(cookieParser());
+    configurePassport();
     app.use(session(configureSession()));
     app.use(passport.initialize());
     app.use(passport.session());
