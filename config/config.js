@@ -9,7 +9,7 @@ const config = () => ({
     },
     shragaConfig: {
         shragaURL: process.env.SHRAGA_URL || 'http://localhost:3000',
-        callbackURL: process.env.SHRAGA_CALLBACK_URL || '/auth/shraga/callback'
+        callbackURL: process.env.SHRAGA_CALLBACK_URL || '/auth/shraga'
     },
     sessionConfig: {
         secret: process.env.SESSION_SECRET || 'secret',
