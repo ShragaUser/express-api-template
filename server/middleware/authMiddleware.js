@@ -49,7 +49,7 @@ const applyAuthMiddleware = app => {
     // redirects all requests to shraga if not authenticated
     app.use((req, res, next) => {
         if (!req.user)
-            res.redirect(`${shragaConfig.callbackURL}?RelayState=${req.path}`);
+            res.redirect(`/auth/shraga?RelayState=${req.path}`);
         else
             next();
     });
